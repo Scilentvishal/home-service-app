@@ -7,6 +7,7 @@ import BusinessListItem from "./BusinessListItem";
 
 import { ScrollView } from "react-native-virtualized-view";
 import Colors from "../../Utils/Colors";
+import PageHeading from "../../Components/PageHeading";
 
 export default function BusinessListByCategoryScreen() {
   const param = useRoute();
@@ -26,15 +27,10 @@ export default function BusinessListByCategoryScreen() {
 
   return (
     <View style={{ padding: 15 }}>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
-      >
-        <Ionicons name="arrow-back" size={30} color="black" />
-        <Text style={{ fontSize: 25, fontFamily: "Outfit-Medium" }}>
-          {param.params.category}
-        </Text>
-      </TouchableOpacity>
+      <PageHeading
+        title={param.params.category}
+        onClick={() => navigation.goBack()}
+      />
       <ScrollView>
         {businessList.length > 0 ? (
           <FlatList
